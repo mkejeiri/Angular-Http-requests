@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      
+      <!-- 
+      since we assign to the Prop appName an observable:e.g.  appName  = this.serverService.getAppName();
+      we get : 'Application Name : [object Object]' shown in the page!!!
+      'async pipe' tells angular to subscribe to this observable and get the value 'appName' from firebase
+      when the data becomes available after the request. 
+      -->
+      <h1>Application Name : {{appName|async}}</h1>
+      
+      
+      <input type="text" #serverName>
+      <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button>
+      <hr>
+      <button type="button" (click)="onSave()" class="btn btn-success">Save Servers</button>
+      <button type="button" (click)="onGetServers()" class="btn btn-warning">Get Servers</button>
+      <hr>
+      <ul class="list-group" *ngFor="let server of servers">
+        <li class="list-group-item">{{ server.name }} (ID: {{ server.id }})</li>
+      </ul>
+    </div>
+  </div>
+</div>
